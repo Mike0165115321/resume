@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทักษะ - Resume นาย ชยพล พรมสะวะนา</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Page-Specific Styles for Skills Page -->
+    <style>
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); /* Adjust grid for 6 items */
+            gap: 25px;
+        }
+        .service-card .service-icon i {
+            font-size: 28px;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .service-icon i {
+            transform: scale(1.2) rotate(5deg); /* Add a little rotation */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-shapes">
+        <div class="shape"></div><div class="shape"></div><div class="shape"></div>
+        <div class="shape"></div><div class="shape"></div><div class="shape"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav class="glass">
+                <div class="logo" onclick="window.location.href='index.html'">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 48 48" fill="white" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="5" opacity="0.9"/><circle cx="32" cy="16" r="4" opacity="0.8"/><circle cx="16" cy="32" r="4" opacity="0.7"/><circle cx="32" cy="32" r="5" opacity="0.85"/><circle cx="24" cy="8" r="2" opacity="1"/><circle cx="8" cy="24" r="2" opacity="0.9"/><circle cx="40" cy="24" r="2" opacity="0.9"/><circle cx="24" cy="40" r="2" opacity="1"/><circle cx="8" cy="8" r="1" opacity="0.6"/><circle cx="40" cy="8" r="1" opacity="0.6"/><circle cx="8" cy="40" r="1" opacity="0.6"/><circle cx="40" cy="40" r="1" opacity="0.6"/></svg>
+                    </div>
+                    <span>resume</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">แนะนำตัว</a>
+                    <a href="projects.html">โปรเจค</a>
+                    <a href="skills.html" class="active">ทักษะ</a>
+                    <a href="contact.html">ติดต่อ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div id="skills" class="page active">
+        <div class="container">
+            <div class="content-wrapper">
+                <section class="hero glass">
+                    <h1>ทักษะและความสามารถ</h1>
+                    <p>ภาพรวมของทักษะด้านเทคโนโลยี, สถาปัตยกรรม, และกระบวนการทำงานที่ผมมีความเชี่ยวชาญ</p>
+                </section>
+                <section class="services-grid">
+
+                    <!-- Card 1: AI & Machine Learning -->
+                    <div class="service-card glass">
+                        <div class="service-header"><div class="service-icon"><i class='bx bxs-brain'></i></div><h3>AI & Machine Learning</h3></div>
+                        <p>ความเข้าใจเชิงลึกในการทำงานของ AI ตั้งแต่การประยุกต์ใช้โมเดลผ่าน API ไปจนถึงการรันโมเดลบนเครื่อง Local</p>
+                        <ul class="service-features">
+                            <li>Google Gemini & Groq (Llama 3)</li>
+                            <li>RAG & Advanced RAG Techniques</li>
+                            <li>Vector DB (FAISS) & Rerankers</li>
+                            <li>Local LLM Deployment (7B Models)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2: Full-Stack Development -->
+                    <div class="service-card glass">
+                        <div class="service-header"><div class="service-icon"><i class='bx bx-code-block'></i></div><h3>Full-Stack Development</h3></div>
+                        <p>การพัฒนาเว็บแอปพลิเคชันที่ครอบคลุมทั้ง Backend, Frontend, และการออกแบบ API ที่มีประสิทธิภาพ</p>
+                        <ul class="service-features">
+                            <li>Python (FastAPI)</li>
+                            <li>JavaScript (Node.js)</li>
+                            <li>HTML5 & CSS3</li>
+                            <li>PHP (Beginner)</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Card 3: Databases & DevOps Tools -->
+                    <div class="service-card glass">
+                        <div class="service-header"><div class="service-icon"><i class='bx bxs-data'></i></div><h3>Databases & DevOps</h3></div>
+                        <p>การจัดการฐานข้อมูลที่หลากหลายและเครื่องมือสนับสนุนที่ช่วยให้การพัฒนาเป็นไปอย่างราบรื่น</p>
+                        <ul class="service-features">
+                            <li>Neo4j (Graph Database)</li>
+                            <li>SQL (SQLite, etc.)</li>
+                            <li>Git & GitHub</li>
+                            <li>Virtual Environments</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Card 4: Architectural Patterns -->
+                    <div class="service-card glass">
+                        <div class="service-header"><div class="service-icon"><i class='bx bxs-vector'></i></div><h3>Architectural Patterns</h3></div>
+                        <p>ความเข้าใจในการออกแบบและประยุกต์ใช้สถาปัตยกรรมซอฟต์แวร์เพื่อสร้างระบบที่ยืดหยุ่นและขยายขนาดได้</p>
+                        <ul class="service-features">
+                            <li>Dispatcher-Centric MoE</li>
+                            <li>Service-Oriented (API-Driven)</li>
+                            <li>Knowledge Graph (KG-RAG)</li>
+                            <li>ETL Pipelines</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Card 5: Design & Prototyping -->
+                    <div class="service-card glass">
+                        <div class="service-header"><div class="service-icon"><i class='bx bxs-paint'></i></div><h3>Design & Prototyping</h3></div>
+                        <p>ทักษะด้านการออกแบบที่ช่วยให้สามารถสร้างสรรค์ผลงานและสื่อสารไอเดียได้อย่างครบวงจร</p>
+                        <ul class="service-features">
+                            <li>Figma (UI/UX Design)</li>
+                            <li>Canva</li>
+                            <li>Adobe Photoshop (Basic)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 6: Soft Skills & Methodology -->
+                    <div class="service-card glass">
+                        <div class="service-header"><div class="service-icon"><i class='bx bxs-user-check'></i></div><h3>Soft Skills & Methodology</h3></div>
+                        <p>ทักษะด้านบุคคลและกระบวนการทำงานที่เป็นรากฐานสำคัญในการทำงานร่วมกับผู้อื่นและพัฒนาตนเอง</p>
+                        <ul class="service-features">
+                            <li>Problem Solving</li>
+                            <li>Fast Learning & Adaptability</li>
+                            <li>Team Collaboration</li>
+                        </ul>
+                    </div>
+                    
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <footer class="glass">
+                <p>© 2024 Resume Chapol Promsavana</p>
+            </footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+@charset "utf-8";
+
+/* =================================================================
+   TABLE OF CONTENTS
+   1.  General & Reset Styles (NEW CYBERNETIC COLORS)
+   2.  Font & Typography
+   3.  Animated Background
+   4.  Glassmorphism Base Style
+   5.  Main Layout
+   6.  Navigation Bar
+   7.  Hero Section
+   8.  Feature & Skill Cards
+   9.  Project Section
+   10. Contact Form
+   11. Accessibility
+   12. Responsive Design
+================================================================= */
+
+/* --- 1. General & Reset Styles (NEW CYBERNETIC COLORS) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* NEW: Cybernetic Gradient */
+    background: linear-gradient(
+        135deg, #1d3f4e 0%, #2483a3 50%, #273faa 100%
+    );
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: rgba(230, 230, 255, 0.9);
+    font-family: 'Noto Sans Thai', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- 2. Font & Typography --- */
+h1, h2, h3, h4, h5, h6, .logo, .cta-button {
+    font-family: 'Poppins', 'Noto Sans Thai', sans-serif;
+    color: #ffffff;
+}
+
+/* --- 3. Animated Background --- */
+.bg-shapes {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.07); /* Slightly brighter shapes */
+    animation: float 10s ease-in-out infinite alternate;
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+}
+
+.shape:nth-child(1) { width: 120px; height: 80px; border-radius: 15px; top: 20%; left: 10%; animation-delay: 0s; }
+.shape:nth-child(2) { width: 90px; height: 140px; border-radius: 12px; top: 60%; right: 15%; animation-delay: 2s; }
+.shape:nth-child(3) { width: 100px; height: 60px; border-radius: 10px; bottom: 20%; left: 20%; animation-delay: 4s; }
+.shape:nth-child(4) { width: 80px; height: 120px; border-radius: 8px; top: 10%; right: 30%; animation-delay: 1s; }
+.shape:nth-child(5) { width: 110px; height: 70px; border-radius: 14px; bottom: 40%; right: 20%; animation-delay: 3s; }
+.shape:nth-child(6) { width: 95px; height: 95px; border-radius: 20px; top: 40%; left: 5%; animation-delay: 5s; }
+
+@keyframes float {
+    from { transform: translateY(0px) rotate(0deg) scale(1); }
+    to   { transform: translateY(-35px) rotate(10deg) scale(1.05); }
+}
+
+/* --- 4. Glassmorphism Base Style --- */
+.glass {
+    background: rgba(255, 255, 255, 0.1); /* Brighter glass */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 229, 255, 0.25); /* NEW: Electric Blue glow */
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- 5. Main Layout --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.page { display: none; padding: 20px 0; animation: fadeInPage 0.6s ease-out forwards; }
+.page.active { display: block; }
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.content-wrapper { min-height: calc(100vh - 250px); }
+section { margin-bottom: 60px; }
+header { padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+#footer { padding: 20px 0; margin-top: auto; }
+#footer .glass { padding: 25px 30px; text-align: center; }
+
+/* --- 6. Navigation Bar --- */
+nav.glass { display: flex; justify-content: space-between; align-items: center; padding: 20px 35px; }
+.logo { font-size: 28px; font-weight: bold; display: flex; align-items: center; gap: 15px; cursor: pointer; }
+.logo-icon { width: 48px; height: 48px; }
+.logo-icon svg { width: 100%; height: 100%; filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3)); transition: all 0.3s ease; }
+.logo:hover .logo-icon svg { transform: scale(1.1) translateY(-2px); filter: drop-shadow(0 4px 12px rgba(0, 229, 255, 0.4)); }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { color: rgba(230, 230, 255, 0.9); text-decoration: none; font-weight: 500; transition: all 0.3s ease; padding: 10px 20px; border-radius: 12px; font-size: 16px; border: 1px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: #ffffff; background: rgba(0, 229, 255, 0.1); text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); border-color: rgba(0, 229, 255, 0.2); }
+
+/* --- 7. Hero Section --- */
+.hero.glass { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 60px 40px; }
+.hero-image { display: flex; justify-content: center; align-items: center; }
+.hero-image img { width: 100%; max-width: 440px; height: auto; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); }
+.hero-content { text-align: left; }
+.hero-content h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 15px; }
+.hero-content h3 { font-size: 1.5rem; color: rgba(230, 230, 255, 0.8); font-weight: 400; margin-bottom: 25px; }
+.hero-content p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 30px; }
+
+/* --- 8. Feature & Skill Cards --- */
+.features, .services-grid { display: grid; gap: 30px; }
+.features { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.services-grid { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+.feature-card, .service-card { padding: 40px 30px; text-align: center; }
+.feature-icon, .service-icon { width: 60px; height: 60px; margin: 0 auto 20px; background: rgba(0, 229, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #00E5FF; }
+.feature-card h3, .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+.feature-card p, .service-card p { line-height: 1.6; }
+.service-card { text-align: left; }
+.service-header { display: flex; align-items: center; margin-bottom: 20px; justify-content: flex-start; }
+.service-icon { margin-right: 15px; margin-left: 0; }
+.service-features { list-style: none; padding-left: 0; }
+.service-features li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+.service-features li::before { content: "✓"; position: absolute; left: 0; color: #00E5FF; }
+
+/* --- 9. Project Section --- */
+.about-content { margin-top: 20px; }
+.about-text.glass { padding: 30px 40px; }
+.about-text h2 { font-size: 2rem; margin-bottom: 15px; }
+.about-text p { line-height: 1.8; font-size: 1.1rem; }
+.team-section h2 { font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
+.team-grid { display: flex; flex-direction: column; gap: 30px; }
+.project-card-horizontal.glass { display: flex; flex-direction: column; gap: 20px; padding: 30px 35px; }
+.project-header h3 { font-size: 1.9rem; background: -webkit-linear-gradient(45deg, #00E5FF, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+.project-header .role { font-size: 0.95rem; color: rgba(230, 230, 255, 0.7); font-family: 'Poppins', 'Noto Sans Thai', sans-serif; line-height: 1.6; }
+.project-body .bio { font-size: 1.05rem; line-height: 1.8; color: rgba(230, 230, 255, 0.9); margin-bottom: 25px; border-left: 3px solid #00E5FF; padding-left: 20px; }
+.project-body .bio strong { color: #ffffff; font-weight: 600; }
+.architecture-highlights { list-style: none; padding: 20px; margin-top: 15px; border-top: 1px solid rgba(0, 229, 255, 0.15); background: rgba(0,0,0,0.2); border-radius: 16px; }
+.architecture-highlights li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; font-size: 0.95rem; line-height: 1.7; color: rgba(230, 230, 255, 0.85); }
+.architecture-highlights li:last-child { margin-bottom: 0; }
+.architecture-highlights li i { font-size: 22px; color: #00E5FF; margin-top: 3px; transition: transform 0.3s ease, color 0.3s ease; }
+.architecture-highlights li:hover i { transform: scale(1.2); color: #ffffff; }
+.architecture-highlights li strong { color: #ffffff; font-weight: 600; }
+.team-social { display: flex; align-items: center; justify-content: flex-start; gap: 15px; margin-top: 15px; padding-top: 20px; border-top: 1px solid rgba(0, 229, 255, 0.15); }
+.team-social a { width: 42px; height: 42px; background: rgba(0, 229, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(230, 230, 255, 0.8); text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(0, 229, 255, 0.15); }
+.team-social a:hover { background: rgba(0, 229, 255, 0.15); transform: translateY(-3px); color: #ffffff; }
+.team-social a i { font-size: 24px; }
+.github-prompt { font-size: 0.9rem; color: rgba(230, 230, 255, 0.6); font-style: italic; }
+
+/* --- 10. Contact Form --- */
+.contact-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+.contact-form.glass, .contact-info.glass { padding: 40px; }
+.contact-form h2, .contact-info h2 { font-size: 2rem; margin-bottom: 30px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+.form-group input, .form-group textarea { width: 100%; padding: 15px; background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 10px; color: #ffffff; font-size: 16px; font-family: inherit; transition: all 0.3s ease; }
+.form-group input:focus, .form-group textarea:focus { outline: none; background: rgba(0, 229, 255, 0.15); border-color: rgba(0, 229, 255, 0.4); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(230, 230, 255, 0.6); }
+.form-group textarea { height: 120px; resize: vertical; line-height: 1.5; }
+.contact-item { display: flex; align-items: center; margin-bottom: 25px; }
+.contact-item-icon { width: 40px; height: 40px; background: rgba(0, 229, 255, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px; flex-shrink: 0; color: #00E5FF;}
+.contact-item-text h4 { margin-bottom: 5px; }
+.contact-item-text p { line-height: 1.4; }
+button.cta-button, .cta-button { font-family: inherit; cursor: pointer; display: inline-block; padding: 15px 40px; background: rgba(0, 229, 255, 0.2); text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; border: 2px solid rgba(0, 229, 255, 0.3); }
+.cta-button:hover { background: rgba(0, 229, 255, 0.3); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+
+/* --- 11. Accessibility --- */
+.nav-links a:focus-visible,
+.cta-button:focus-visible,
+.team-social a:focus-visible {
+    outline: 2px solid #00E5FF;
+    outline-offset: 3px;
+    box-shadow: 0 0 15px #00E5FF;
+}
+
+/* --- 12. Responsive Design --- */
+@media (max-width: 1024px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .hero.glass { grid-template-columns: 1fr; text-align: center; }
+    .hero-content { text-align: center; }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper { min-height: auto; }
+    .hero.glass { padding: 30px 20px; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .hero-content h3 { font-size: 1.2rem; }
+    .hero-content p { font-size: 1rem; }
+    header { position: static; }
+    nav.glass { flex-direction: column; gap: 20px; padding: 20px 15px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .nav-links a { font-size: 14px; padding: 8px 15px; }
+    .logo { font-size: 22px; }
+    .logo-icon { width: 40px; height: 40px; }
+    button.cta-button { width: 100%; }
+    .project-header h3 { font-size: 1.6rem; }
+}
+/* === START: Robot Companion Styles === */
+.robot-container {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    cursor: pointer; /* ทำให้เมาส์เป็นรูปมือเมื่อชี้ */
+}
+
+#robot-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.3));
+}
+
+#robot-body { animation: robot-float 6s ease-in-out infinite; }
+@keyframes robot-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+#robot-head { animation: head-tilt 6s ease-in-out infinite; transform-origin: 100px 100px; }
+@keyframes head-tilt {
+     0%, 100% { transform: rotate(-1deg); }
+     50% { transform: rotate(1deg); }
+}
+
+#left-arm, #right-leg { animation: arm-leg-swing-1 6s ease-in-out infinite; transform-origin: 65px 100px; }
+#right-arm, #left-leg { animation: arm-leg-swing-2 6s ease-in-out infinite; transform-origin: 135px 100px; }
+@keyframes arm-leg-swing-1 {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+}
+@keyframes arm-leg-swing-2 {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-5deg); }
+}
+
+#antenna-light { animation: blink-kid 2s infinite; }
+@keyframes blink-kid {
+    0%, 45%, 100% { fill: #00E5FF; }
+    50% { fill: white; }
+}
+
+
+
+.robot-container {
+    position: relative; /* ทำให้เป็นจุดอ้างอิงของ chat bubble */
+}
+
+.chat-bubble {
+    position: absolute;
+    top: 50%; /* เริ่มต้นที่กึ่งกลางแนวตั้ง */
+    left: 90%; /* เริ่มต้นที่ขอบขวาของ container */
+    transform: translateY(-50%) scale(0.8); /* จัดให้อยู่กลางและย่อขนาดเริ่มต้น */
+    
+    background: white;
+    color: #1a1a2e;
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Animation ที่นุ่มนวลขึ้น */
+    white-space: nowrap;
+}
+
+.chat-bubble.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1); /* ทำให้ขยายและพุ่งออกมา */
+}
+
+/* สามเหลี่ยมชี้ไปทางซ้าย */
+.chat-bubble::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%; /* ชี้ไปทางซ้าย */
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+}
