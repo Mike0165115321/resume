@@ -1,32 +1,31 @@
-// === START: Interactive Robot & Guide Script (Final Multi-page Animation) ===
+// === START: Interactive Robot & Guide Script (Final Corrected Version) ===
 
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- ส่วนที่ 1: จัดการ Animation การเปลี่ยนหน้า ---
-    const navLinks = document.querySelectorAll('.nav-links a:not([target="_blank"])');
+    const navLinks = document.querySelectorAll('.nav-links a:not([target="_blank"]), a.cta-button');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const destination = this.href;
-            if (!destination || destination === window.location.href) {
+            if (!destination || destination === window.location.href || destination.endsWith('#')) {
                 return;
             }
             e.preventDefault();
             
-            // ถ้าอยู่หน้าแรก ให้เริ่ม Animation แปลงร่าง
             if (document.body.classList.contains('is-index-page')) {
                  document.body.classList.add('fade-out');
-            } else { // ถ้าอยู่หน้าอื่น ให้ทำ fade out ธรรมดา
+            } else {
                  document.body.style.transition = 'opacity 0.5s ease-out';
                  document.body.style.opacity = 0;
             }
 
-            // รอให้ Animation ทำงานจบแล้วค่อยเปลี่ยนหน้า
             setTimeout(() => {
                 window.location.href = destination;
-            }, 1000); // 
+            }, 1000); // 1 วินาทีสำหรับ Animation
         });
     });
 
+    // --- ส่วนที่ 2: สคริปต์สำหรับหุ่นยนต์ตัวเต็ม (เฉพาะหน้าแรก) ---
     const fullRobotContainer = document.getElementById('robot-clickable-area');
     if (fullRobotContainer) {
         document.body.classList.add('is-index-page');
@@ -107,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             robotSpeak(response, chatBubble, mouthClosed, mouthOpen);
         });
 
-        setTimeout(() => robotSpeak("สวัสดีครับ ผมคือเฟิง ผู้ดูแลเรซูเม่ของไมค์", chatBubble, mouthClosed, mouthOpen), 1500);
+        setTimeout(() => robotSpeak("สวัสดีครับ ผมคือ AI ผู้ดูแลเรซูเม่ของไมค์", chatBubble, mouthClosed, mouthOpen), 1500);
     }
 
     // --- ส่วนที่ 3: สคริปต์สำหรับไกด์นำทาง (ทุกหน้าที่ไม่ใช่หน้าแรก) ---
