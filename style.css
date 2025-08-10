@@ -301,3 +301,139 @@ button.cta-button, .cta-button { font-family: inherit; cursor: pointer; display:
     border-style: solid;
     border-color: transparent white transparent transparent;
 }
+
+/* === START: Robot Guide & Transition Styles === */
+
+/* --- สไตล์ของไกด์นำทาง --- */
+.robot-guide-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px; /* ขนาดของไกด์ */
+    height: 120px;
+    z-index: 1000;
+    cursor: pointer;
+    transform: scale(0.8); /* เริ่มต้นให้เล็กนิดหน่อย */
+    opacity: 0;
+    animation: guide-fade-in 1s ease 0.5s forwards; /* Animation ตอนปรากฏตัว */
+}
+
+@keyframes guide-fade-in {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.robot-guide-container:hover {
+    transform: scale(1.1);
+}
+
+#robot-guide-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ทำให้หัวของไกด์ลอย */
+#robot-head-guide {
+    animation: robot-float 6s ease-in-out infinite;
+}
+
+#antenna-light-guide {
+    animation: blink-kid 2s infinite;
+}
+
+/* --- สไตล์ของ Chat Bubble สำหรับไกด์ --- */
+.chat-bubble-guide {
+    position: absolute;
+    bottom: 90%;
+    right: 90%;
+    transform: scale(0.8);
+    background: white;
+    color: #1a1a2e;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-family: 'Noto Sans Thai', sans-serif;
+    font-size: 14px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.chat-bubble-guide.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-5px) scale(1);
+}
+
+.chat-bubble-guide::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+
+/* --- Animation แปลงร่าง (เมื่อออกจากหน้าแรก) --- */
+/* --- Animation แปลงร่าง (Iron Man Takeoff) --- */
+
+/* ทำให้ข้อความจางหายไปก่อน */
+body.fade-out .hero-content,
+body.fade-out .features {
+    transition: opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+/* ทำให้หุ่นยนต์ "เตรียมพร้อม" ก่อนพุ่ง */
+body.fade-out .robot-container {
+    animation: iron-man-takeoff 1.2s cubic-bezier(0.5, 0, 1, 0.5) forwards;
+    transform-origin: center;
+}
+
+/* เพิ่มส่วนของ "ไฟจรวด" เข้าไป */
+.robot-container::before, .robot-container::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 0;
+    background: linear-gradient(to top, #00E5FF, white);
+    border-radius: 50% / 20%;
+    opacity: 0;
+}
+.robot-container::before { bottom: 10px; left: 75px; } /* เท้าซ้าย */
+.robot-container::after { bottom: 10px; right: 75px; } /* เท้าขวา */
+
+/* เมื่อเริ่ม Animation ให้ไฟจรวดปรากฏและพุ่งออก */
+body.fade-out .robot-container::before,
+body.fade-out .robot-container::after {
+    animation: rocket-blast 1.2s ease-out forwards;
+}
+
+@keyframes iron-man-takeoff {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(0.95) translateY(10px); /* ย่อตัวลงเล็กน้อยก่อนพุ่ง */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5) translateY(-120vh); /* พุ่งขึ้นไปนอกจอ */
+        opacity: 0;
+    }
+}
+
+@keyframes rocket-blast {
+    0%, 30% { height: 0; opacity: 0; }
+    40% { height: 50px; opacity: 1; }
+    100% { height: 100px; opacity: 0; }
+}
+
+/* === END === */
+/* === END === */

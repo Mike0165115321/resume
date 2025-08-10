@@ -1,6 +1,36 @@
+// === START: Interactive Robot & Guide Script (Final Multi-page Animation) ===
+
 document.addEventListener('DOMContentLoaded', () => {
-    const robotContainer = document.getElementById('robot-clickable-area');
-    if (robotContainer) {
+
+    // --- ส่วนที่ 1: จัดการ Animation การเปลี่ยนหน้า ---
+    const navLinks = document.querySelectorAll('.nav-links a:not([target="_blank"])');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const destination = this.href;
+            if (!destination || destination === window.location.href) {
+                return;
+            }
+            e.preventDefault();
+            
+            // ถ้าอยู่หน้าแรก ให้เริ่ม Animation แปลงร่าง
+            if (document.body.classList.contains('is-index-page')) {
+                 document.body.classList.add('fade-out');
+            } else { // ถ้าอยู่หน้าอื่น ให้ทำ fade out ธรรมดา
+                 document.body.style.transition = 'opacity 0.5s ease-out';
+                 document.body.style.opacity = 0;
+            }
+
+            // รอให้ Animation ทำงานจบแล้วค่อยเปลี่ยนหน้า
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 1000); // 
+        });
+    });
+
+    const fullRobotContainer = document.getElementById('robot-clickable-area');
+    if (fullRobotContainer) {
+        document.body.classList.add('is-index-page');
+        
         const svg = document.getElementById('robot-svg');
         const leftPupil = document.getElementById('left-pupil');
         const rightPupil = document.getElementById('right-pupil');
@@ -16,123 +46,146 @@ document.addEventListener('DOMContentLoaded', () => {
         let clickCount = 0;
         let chatTimeout;
 
-        // NEW: Expanded personality responses
-        const randomResponses = [
-            "มีอะไรเหรอครับ?", 
-            "มีอะไรให้ผมช่วยหรือเปล่า?", 
-            "เรียกผมเหรอครับ?",
-            "ว่าไงครับ"
-        ];
-        const teaseResponses = [
-            "ฮั่นแน่! สนใจผมล่ะสิ",
-            "สนใจผมเหรอ? ผมก็สนใจคุณนะ",
-            "พอแล้วครับ เดี๋ยวผมเขินนะ",
-            "ถ้าอยากคุยกันจริงจัง ไปที่หน้า Contact ได้เลยนะ"
-        ];
+        const randomResponses = ["มีอะไรเหรอครับ?", "มีอะไรให้ผมช่วยหรือเปล่า?", "เรียกผมเหรอครับ?","ว่าไงครับ"];
+        const teaseResponses = ["ฮั่นแน่! สนใจผมล่ะสิ","ชอบผมขนาดนั้นเลยเหรอครับ","พอแล้วครับ เดี๋ยวผมเขินนะ","ถ้าอยากคุยกันจริงจัง ไปที่หน้า Contact ได้เลยนะ"];
 
-        // --- 1. Eye Tracking --- (No changes here)
         document.addEventListener('mousemove', (e) => {
             const svgRect = svg.getBoundingClientRect();
-            const mouse = {
-                x: (e.clientX - svgRect.left) / svgRect.width * 200,
-                y: (e.clientY - svgRect.top) / svgRect.height * 200
-            };
+            const mouse = { x: (e.clientX - svgRect.left) / svgRect.width * 200, y: (e.clientY - svgRect.top) / svgRect.height * 200 };
             const leftDelta = { x: mouse.x - leftEyeCenter.x, y: mouse.y - leftEyeCenter.y };
             const leftAngle = Math.atan2(leftDelta.y, leftDelta.x);
-            const leftOffsetX = Math.cos(leftAngle) * pupilMaxOffset;
-            const leftOffsetY = Math.sin(leftAngle) * pupilMaxOffset;
-            leftPupil.setAttribute('cx', leftEyeCenter.x + leftOffsetX);
-            leftPupil.setAttribute('cy', leftEyeCenter.y + leftOffsetY);
-
+            leftPupil.setAttribute('cx', leftEyeCenter.x + Math.cos(leftAngle) * pupilMaxOffset);
+            leftPupil.setAttribute('cy', leftEyeCenter.y + Math.sin(leftAngle) * pupilMaxOffset);
             const rightDelta = { x: mouse.x - rightEyeCenter.x, y: mouse.y - rightEyeCenter.y };
             const rightAngle = Math.atan2(rightDelta.y, rightDelta.x);
-            const rightOffsetX = Math.cos(rightAngle) * pupilMaxOffset;
-            const rightOffsetY = Math.sin(rightAngle) * pupilMaxOffset;
-            rightPupil.setAttribute('cx', rightEyeCenter.x + rightOffsetX);
-            rightPupil.setAttribute('cy', rightEyeCenter.y + rightOffsetY);
+            rightPupil.setAttribute('cx', rightEyeCenter.x + Math.cos(rightAngle) * pupilMaxOffset);
+            rightPupil.setAttribute('cy', rightEyeCenter.y + Math.sin(rightAngle) * pupilMaxOffset);
         });
 
-        // --- 2. Upgraded Speech & Chat Bubble Function ---
-        function robotSpeak(text) {
-    if (isSpeaking || !('speechSynthesis' in window)) {
-        return;
-    }
-    isSpeaking = true;
-
-    // Show chat bubble
-    chatBubble.textContent = text;
-    chatBubble.classList.add('show');
-    clearTimeout(chatTimeout);
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'th-TH';
-    
-    const voices = window.speechSynthesis.getVoices().filter(v => v.lang === 'th-TH');
-    if (voices.length > 0) {
-        utterance.voice = voices.length > 1 && Math.random() > 0.5 ? voices[1] : voices[0];
-    }
-
-    utterance.pitch = 1.1;
-    utterance.rate = 1.1;
-
-    let mouthAnimationInterval;
-
-    utterance.onstart = () => {
-        mouthAnimationInterval = setInterval(() => {
-            mouthClosed.style.visibility = 'hidden';
-            mouthOpen.style.visibility = 'visible';
-            setTimeout(() => {
-                mouthClosed.style.visibility = 'visible';
-                mouthOpen.style.visibility = 'hidden';
-            }, 150);
-        }, 300);
-    };
-
-    utterance.onend = () => {
-        clearInterval(mouthAnimationInterval);
-        mouthClosed.style.visibility = 'visible';
-        mouthOpen.style.visibility = 'hidden';
-        isSpeaking = false;
-        // Hide chat bubble after speech ends
-        chatTimeout = setTimeout(() => {
-            chatBubble.classList.remove('show');
-        }, 2500); // เพิ่มเวลาให้มองเห็นนานขึ้นเล็กน้อย
-    };
-    
-    window.speechSynthesis.speak(utterance);
-}
-        
-        // Ensure voices are loaded
-        window.speechSynthesis.onvoiceschanged = () => {
-            console.log("Voices loaded");
-        };
-
-
-        // --- 3. Upgraded Click Event Logic ---
-        robotContainer.addEventListener('click', () => {
-            clickCount++;
-            
-            if (clickCount <= 3) {
-                const randomIndex = Math.floor(Math.random() * randomResponses.length);
-                robotSpeak(randomResponses[randomIndex]);
-            } else {
-                const teaseIndex = (clickCount - 4) % teaseResponses.length; // Loop through tease responses
-                robotSpeak(teaseResponses[teaseIndex]);
-            }
-        });
-
-        // --- 4. Automatic Greeting ---
-        function autoGreet() {
-            setTimeout(() => {
-                robotSpeak("สวัสดีครับ ผมคือเฟิง ผู้ดูแลเรซูเม่ของไมค์");
-            }, 1500);
-            
-            setInterval(() => {
-                robotSpeak("ผมคือเฟิง ผู้ดูแลเรซูเม่ของไมค์");
-            }, 30000);
+        function robotSpeak(text, bubbleElement, mouthClosedElement, mouthOpenElement) {
+            if (isSpeaking || !('speechSynthesis' in window)) return;
+            isSpeaking = true;
+            bubbleElement.textContent = text;
+            bubbleElement.classList.add('show');
+            clearTimeout(chatTimeout);
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'th-TH';
+            const voices = window.speechSynthesis.getVoices().filter(v => v.lang === 'th-TH');
+            if (voices.length > 0) utterance.voice = voices.length > 1 && Math.random() > 0.5 ? voices[1] : voices[0];
+            utterance.pitch = 1.1;
+            utterance.rate = 1.1;
+            let mouthAnimationInterval;
+            utterance.onstart = () => {
+                mouthAnimationInterval = setInterval(() => {
+                    mouthClosedElement.style.visibility = 'hidden';
+                    mouthOpenElement.style.visibility = 'visible';
+                    setTimeout(() => {
+                        mouthClosedElement.style.visibility = 'visible';
+                        mouthOpenElement.style.visibility = 'hidden';
+                    }, 150);
+                }, 300);
+            };
+            utterance.onend = () => {
+                clearInterval(mouthAnimationInterval);
+                mouthClosedElement.style.visibility = 'visible';
+                mouthOpenElement.style.visibility = 'hidden';
+                isSpeaking = false;
+                chatTimeout = setTimeout(() => bubbleElement.classList.remove('show'), 2500);
+            };
+            window.speechSynthesis.speak(utterance);
         }
+        window.speechSynthesis.onvoiceschanged = () => {};
+
+        fullRobotContainer.addEventListener('click', () => {
+            clickCount++;
+            let response = "";
+            if (clickCount <= 3) {
+                response = randomResponses[Math.floor(Math.random() * randomResponses.length)];
+            } else {
+                response = teaseResponses[(clickCount - 4) % teaseResponses.length];
+            }
+            robotSpeak(response, chatBubble, mouthClosed, mouthOpen);
+        });
+
+        setTimeout(() => robotSpeak("สวัสดีครับ ผมคือเฟิง ผู้ดูแลเรซูเม่ของไมค์", chatBubble, mouthClosed, mouthOpen), 1500);
+    }
+
+    // --- ส่วนที่ 3: สคริปต์สำหรับไกด์นำทาง (ทุกหน้าที่ไม่ใช่หน้าแรก) ---
+    const guideContainer = document.getElementById('robot-guide');
+    if (guideContainer) {
+        const guideSvg = document.getElementById('robot-guide-svg');
+        const guideLeftPupil = document.getElementById('left-pupil-guide');
+        const guideRightPupil = document.getElementById('right-pupil-guide');
+        const guideMouthClosed = document.getElementById('mouth-closed-guide');
+        const guideMouthOpen = document.getElementById('mouth-open-guide');
+        const guideChatBubble = document.getElementById('robot-chat-bubble-guide');
         
-        autoGreet();
+        const leftEyeCenterGuide = { x: 85, y: 55 };
+        const rightEyeCenterGuide = { x: 115, y: 55 };
+        const pupilMaxOffsetGuide = 6;
+
+        let isGuideSpeaking = false;
+        let guideChatTimeout;
+        
+        const pageGreetings = {
+            "projects.html": "หน้านี้คือโปรเจคที่ไมค์ภูมิใจเสนอครับ",
+            "skills.html": "มาดูทักษะและความสามารถของไมค์กันครับ",
+            "contact.html": "สนใจร่วมงานกับไมค์ใช่ไหม? ติดต่อได้เลยครับ"
+        };
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+        
+        document.addEventListener('mousemove', (e) => {
+             const svgRect = guideSvg.getBoundingClientRect();
+             const mouse = { x: (e.clientX - svgRect.left) / svgRect.width * 200, y: (e.clientY - svgRect.top) / svgRect.height * 200 };
+             const leftDelta = { x: mouse.x - leftEyeCenterGuide.x, y: mouse.y - leftEyeCenterGuide.y };
+             const leftAngle = Math.atan2(leftDelta.y, leftDelta.x);
+             guideLeftPupil.setAttribute('cx', leftEyeCenterGuide.x + Math.cos(leftAngle) * pupilMaxOffsetGuide);
+             guideLeftPupil.setAttribute('cy', leftEyeCenterGuide.y + Math.sin(leftAngle) * pupilMaxOffsetGuide);
+             const rightDelta = { x: mouse.x - rightEyeCenterGuide.x, y: mouse.y - rightEyeCenterGuide.y };
+             const rightAngle = Math.atan2(rightDelta.y, rightDelta.x);
+             guideRightPupil.setAttribute('cx', rightEyeCenterGuide.x + Math.cos(rightAngle) * pupilMaxOffsetGuide);
+             guideRightPupil.setAttribute('cy', rightEyeCenterGuide.y + Math.sin(rightAngle) * pupilMaxOffsetGuide);
+        });
+
+        function guideSpeak(text) {
+             if (isGuideSpeaking || !('speechSynthesis' in window)) return;
+             isGuideSpeaking = true;
+             guideChatBubble.textContent = text;
+             guideChatBubble.classList.add('show');
+             clearTimeout(guideChatTimeout);
+             const utterance = new SpeechSynthesisUtterance(text);
+             utterance.lang = 'th-TH';
+             const voices = window.speechSynthesis.getVoices().filter(v => v.lang === 'th-TH');
+             if (voices.length > 0) utterance.voice = voices.length > 1 && Math.random() > 0.5 ? voices[1] : voices[0];
+             utterance.pitch = 1.2;
+             utterance.rate = 1.1;
+             let mouthAnimationInterval;
+             utterance.onstart = () => {
+                 mouthAnimationInterval = setInterval(() => {
+                     guideMouthClosed.style.visibility = 'hidden';
+                     guideMouthOpen.style.visibility = 'visible';
+                     setTimeout(() => {
+                         guideMouthClosed.style.visibility = 'visible';
+                         guideMouthOpen.style.visibility = 'hidden';
+                     }, 150);
+                 }, 300);
+             };
+             utterance.onend = () => {
+                 clearInterval(mouthAnimationInterval);
+                 guideMouthClosed.style.visibility = 'visible';
+                 guideMouthOpen.style.visibility = 'hidden';
+                 isGuideSpeaking = false;
+                 guideChatTimeout = setTimeout(() => guideChatBubble.classList.remove('show'), 3000);
+             };
+             window.speechSynthesis.speak(utterance);
+        }
+        window.speechSynthesis.onvoiceschanged = () => {};
+        
+        guideContainer.addEventListener('click', () => {
+            guideSpeak(pageGreetings[currentPage] || "มีอะไรให้ช่วยไหมครับ?");
+        });
+        
+        setTimeout(() => guideSpeak(pageGreetings[currentPage] || "ยินดีต้อนรับครับ"), 1500);
     }
 });
 
