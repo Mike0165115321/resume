@@ -111,37 +111,27 @@
                 <section class="hero glass">
                     <div class="robot-container" id="robot-clickable-area">
                         <svg id="robot-svg" viewBox="0 0 200 200">
-                            <!-- Main Body Group -->
                             <g id="robot-body">
-                                <!-- Legs -->
                                 <path id="left-leg" d="M 80,155 L 70,195 L 90,195 Z" fill="#BCC6CC" />
                                 <path id="right-leg" d="M 120,155 L 110,195 L 130,195 Z" fill="#BCC6CC" />
-                                <!-- Torso -->
                                 <path d="M 65,90 L 135,90 L 125,155 L 75,155 Z" fill="#DCE1E3" />
-                                <!-- Arms -->
                                 <circle cx="65" cy="100" r="10" fill="#BCC6CC" />
                                 <path id="left-arm" d="M 65,110 L 45,140 L 55,145 Z" fill="#E0E5E8" />
                                 <circle cx="135" cy="100" r="10" fill="#BCC6CC" />
                                 <path id="right-arm" d="M 135,110 L 155,140 L 145,145 Z" fill="#E0E5E8" />
 
-                                <!-- Head Group -->
                                 <g id="robot-head">
-                                    <!-- Head Glass Dome -->
                                     <circle cx="100" cy="55" r="45" fill="rgba(224, 240, 255, 0.25)"
                                         stroke="rgba(255, 255, 255, 0.6)" stroke-width="2.5" />
-                                    <!-- Face Color -->
                                     <circle cx="100" cy="55" r="42" fill="#00E5FF" />
-                                    <!-- Eyes -->
                                     <circle id="left-pupil" cx="85" cy="55" r="7" fill="#1A1A1A" />
                                     <circle id="right-pupil" cx="115" cy="55" r="7" fill="#1A1A1A" />
-                                    <!-- Mouth Group -->
                                     <g id="mouth-group">
                                         <path id="mouth-closed" d="M 92,78 Q 100,85 108,78" stroke="#1A1A1A"
                                             stroke-width="3" fill="none" stroke-linecap="round" />
                                         <path id="mouth-open" d="M 95,78 C 97,88 103,88 105,78 Z" fill="#1A1A1A"
                                             visibility="hidden" />
                                     </g>
-                                    <!-- Antenna -->
                                     <line x1="100" y1="10" x2="100" y2="-5" stroke="#BCC6CC" stroke-width="3" />
                                     <circle cx="100" cy="-5" r="5" fill="#00E5FF" id="antenna-light" />
                                 </g>
