@@ -324,7 +324,4 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
         left: 50%;
         transform: translateX(-50%);
     }
-    .bg-shapes {
-        display: none; /* ปิด animated background บนมือถือเพื่อ performance ที่ดีขึ้น (แนะนำ) */
-    }
 }
