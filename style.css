@@ -179,25 +179,152 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
 /* --- 12. Accessibility --- */
 .nav-links a:focus-visible, .cta-button:focus-visible, .team-social a:focus-visible { outline: 2px solid #00E5FF; outline-offset: 3px; box-shadow: 0 0 15px #00E5FF; }
 
-/* --- 13. Responsive Design --- */
+/* --- 13. Responsive Design (IMPROVED) --- */
 @media (max-width: 1024px) {
-    .contact-grid { grid-template-columns: 1fr; }
-    .hero.glass { grid-template-columns: 1fr; text-align: center; }
-    .hero-content { text-align: center; }
+    /* --- สำหรับ Tablet --- */
+    .hero.glass {
+        grid-template-columns: 1fr; /* เปลี่ยน Hero section เป็น 1 คอลัมน์ */
+        text-align: center;
+    }
+    .hero-content {
+        text-align: center; /* จัดเนื้อหาให้อยู่ตรงกลาง */
+        order: 2; /* สลับลำดับให้เนื้อหาอยู่ล่างรูป */
+    }
+    .hero-image {
+        order: 1; /* สลับลำดับให้รูปอยู่บน */
+    }
+    .hero-actions {
+        justify-content: center; /* จัดปุ่มและ social links ให้อยู่กลาง */
+    }
+    .contact-grid {
+        grid-template-columns: 1fr; /* เปลี่ยน Contact section เป็น 1 คอลัมน์ */
+    }
 }
+
 @media (max-width: 768px) {
-    .content-wrapper { min-height: auto; }
-    .hero.glass { padding: 30px 20px; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .hero-content h3 { font-size: 1.2rem; }
-    .hero-content p { font-size: 1rem; }
-    header { position: static; }
-    nav.glass { flex-direction: column; gap: 20px; padding: 20px 15px; }
-    .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .nav-links a { font-size: 14px; padding: 8px 15px; }
-    .logo { font-size: 22px; }
-    .logo-icon { width: 40px; height: 40px; }
-    button.cta-button { width: 100%; }
-    .project-header h3 { font-size: 1.6rem; }
-    .hero-actions { flex-direction: column; align-items: center; gap: 20px; }
+    /* --- สำหรับ Mobile --- */
+    body {
+        font-size: 15px; /* ปรับขนาด font พื้นฐานสำหรับมือถือ */
+    }
+    .container {
+        padding: 0 15px; /* ลดระยะห่างขอบข้าง */
+    }
+    .content-wrapper {
+        min-height: auto;
+    }
+    header {
+        position: static; /* ยกเลิกการ stick navigation bar */
+        padding: 15px 0;
+    }
+    nav.glass {
+        flex-direction: column; /* จัดเรียง nav items เป็นแนวตั้ง */
+        gap: 25px;
+        padding: 20px;
+    }
+    .logo {
+        font-size: 24px;
+    }
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .nav-links {
+        flex-wrap: wrap; /* ทำให้ link ขึ้นบรรทัดใหม่ได้ */
+        justify-content: center;
+        gap: 10px;
+    }
+    .nav-links a {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+    .hero.glass {
+        padding: 30px 20px;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem; /* ลดขนาด H1 */
+    }
+    .hero-content h3 {
+        font-size: 1.2rem; /* ลดขนาด H3 */
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .hero-actions {
+        flex-direction: column; /* จัดเรียงปุ่มเป็นแนวตั้ง */
+        align-items: center;
+        gap: 20px;
+    }
+    /* --- [สำคัญ] แก้ไขปุ่ม CTA ที่เป็น position: fixed --- */
+    .hero-cta-button .cta-button {
+        position: relative; /* เปลี่ยนเป็น relative เพื่อให้อยู่ใน flow ปกติ */
+        top: auto;
+        left: auto;
+        margin: 0;
+        width: 100%; /* ทำให้ปุ่มกว้างเต็มพื้นที่ */
+        text-align: center;
+    }
+    .features, .services-grid {
+        gap: 20px; /* ลดช่องว่างระหว่าง card */
+    }
+    .feature-card, .service-card, .project-card-horizontal.glass, .about-text.glass {
+        padding: 25px 20px; /* ลด padding ของ card ทั้งหมด */
+    }
+    .team-section h2 {
+        font-size: 2rem;
+    }
+    .project-header h3 {
+        font-size: 1.6rem;
+    }
+    .contact-form.glass, .contact-info.glass {
+        padding: 30px 20px;
+    }
+    button.cta-button, .cta-button {
+        width: 100%; /* ทำให้ปุ่มกดยาวเต็มความกว้าง */
+        padding: 15px 20px;
+    }
+    /* --- ปรับตำแหน่ง Chat Bubble ของหุ่นยนต์ --- */
+    .robot-container {
+        max-width: 250px; /* ลดขนาดหุ่นยนต์เล็กน้อย */
+    }
+    .chat-bubble {
+        /* ย้าย bubble มาไว้ด้านบนแทนด้านข้าง เพื่อไม่ให้ล้นจอ */
+        left: 50%;
+        top: -15px; /* ตำแหน่งเหนือหัวหุ่นยนต์ */
+        transform: translateX(-50%) scale(0.8);
+    }
+    .chat-bubble.show {
+        transform: translateX(-50%) scale(1);
+    }
+    .chat-bubble::after {
+        /* ปรับลูกศรชี้ลง */
+        top: 100%;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        border-color: white transparent transparent transparent;
+        border-width: 8px;
+    }
+    .robot-guide-container {
+        width: 90px; /* ลดขนาด guide robot */
+        height: 90px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .chat-bubble-guide {
+        /* จัดตำแหน่ง bubble ของ guide robot ให้อยู่กลางๆ */
+        bottom: 105%;
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .chat-bubble-guide.show {
+        transform: translateX(50%) translateY(-5px) scale(1);
+    }
+    .chat-bubble-guide::after {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .bg-shapes {
+        display: none; /* ปิด animated background บนมือถือเพื่อ performance ที่ดีขึ้น (แนะนำ) */
+    }
 }
