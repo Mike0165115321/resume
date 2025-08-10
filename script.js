@@ -1,8 +1,5 @@
-// === START: Interactive Robot & Guide Script (Final Corrected Version) ===
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- ส่วนที่ 1: จัดการ Animation การเปลี่ยนหน้า ---
     const navLinks = document.querySelectorAll('.nav-links a:not([target="_blank"]), a.cta-button');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -21,11 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(() => {
                 window.location.href = destination;
-            }, 1000); // 1 วินาทีสำหรับ Animation
+            }, 1000);
         });
     });
 
-    // --- ส่วนที่ 2: สคริปต์สำหรับหุ่นยนต์ตัวเต็ม (เฉพาะหน้าแรก) ---
     const fullRobotContainer = document.getElementById('robot-clickable-area');
     if (fullRobotContainer) {
         document.body.classList.add('is-index-page');
@@ -109,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => robotSpeak("สวัสดีครับ ผมคือ AI ผู้ดูแลเรซูเม่ของไมค์", chatBubble, mouthClosed, mouthOpen), 1500);
     }
 
-    // --- ส่วนที่ 3: สคริปต์สำหรับไกด์นำทาง (ทุกหน้าที่ไม่ใช่หน้าแรก) ---
     const guideContainer = document.getElementById('robot-guide');
     if (guideContainer) {
         const guideSvg = document.getElementById('robot-guide-svg');
@@ -188,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ทำให้พื้นหลังเลื่อนลงตอน scroll
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const parallax = document.querySelector('.bg-shapes');
@@ -199,11 +193,8 @@ window.addEventListener('scroll', () => {
 });
 
 
-// --- ส่วนนี้สำหรับเอฟเฟกต์ Ripple เมื่อคลิกบนองค์ประกอบ .glass ---
-
 document.querySelectorAll('.glass').forEach(element => {
     element.addEventListener('click', function(e) {
-        // ป้องกันไม่ให้ ripple เกิดบน link ที่กำลังจะเปลี่ยนหน้า หรือปุ่ม submit
         if (e.target.tagName === 'A' || e.target.closest('a') || e.target.type === 'submit') {
             return;
         }
@@ -238,7 +229,6 @@ document.querySelectorAll('.glass').forEach(element => {
     });
 });
 
-// เพิ่ม Keyframes ของ animation ripple เข้าไปใน style
 const style = document.createElement('style');
 style.textContent = `
     @keyframes ripple {
@@ -250,54 +240,72 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-
-// --- ส่วนนี้สำหรับจัดการฟอร์มในหน้า Contact ---
-// เราจะตรวจสอบก่อนว่าในหน้านั้นมีฟอร์มอยู่หรือไม่ เพื่อไม่ให้เกิด error ในหน้าอื่น
-
-const contactForm = document.querySelector('form');
-
+// --- ส่วนที่ 4: สคริปต์สำหรับฟอร์มติดต่อ (Formspree Backend) ---
+const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    // เพิ่ม Keyframes ของ animation fadeIn สำหรับข้อความแจ้งเตือน
-    const fadeStyle = document.createElement('style');
-    fadeStyle.textContent = `
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        }
-    `;
-    document.head.appendChild(fadeStyle);
-
-    // จัดการเมื่อมีการกดส่งฟอร์ม
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // ป้องกันไม่ให้หน้าเว็บโหลดใหม่
-
-        // สร้างข้อความแจ้งว่าส่งสำเร็จ
-        const successMsg = document.createElement('div');
-        successMsg.style.cssText = `
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(46, 204, 113, 0.95);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            z-index: 10000;
-            animation: fadeIn 0.4s ease-out;
-            text-align: center;
+    if (!document.querySelector('#form-animation-style')) {
+        const fadeStyle = document.createElement('style');
+        fadeStyle.id = 'form-animation-style';
+        fadeStyle.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+                to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            }
         `;
-        successMsg.textContent = 'ส่งข้อความเรียบร้อยแล้วครับ!';
+        document.head.appendChild(fadeStyle);
+    }
 
-        document.body.appendChild(successMsg);
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
 
-        // ลบข้อความออกหลังจาก 3 วินาที
-        setTimeout(() => {
-            successMsg.remove();
-        }, 3000);
+        submitButton.textContent = 'กำลังส่ง...';
+        submitButton.disabled = true;
+        
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
-        // ล้างข้อมูลในฟอร์ม
-        this.reset();
+            if (response.ok) {
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = `
+                    position: fixed; top: 20%; left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(255, 255, 255, 0.95);
+                    color: #008B8B;
+                    padding: 20px 40px;
+                    border-radius: 12px;
+                    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    animation: fadeIn 0.4s ease-out;
+                    text-align: center;
+                    font-weight: 600;
+                `;
+                successMsg.textContent = 'ส่งข้อความเรียบร้อยแล้ว!';
+                document.body.appendChild(successMsg);
+
+                setTimeout(() => {
+                    successMsg.remove();
+                }, 3000);
+                form.reset();
+            } else {
+                alert("ขออภัย, เกิดข้อผิดพลาดในการส่งข้อความ กรุณาลองใหม่อีกครั้ง");
+            }
+        } catch (error) {
+            console.error('Submit error:', error);
+            alert("ขออภัย, เกิดข้อผิดพลาดในการส่งข้อความ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต");
+        } finally {
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+        }
     });
 }
+// === END: สิ้นสุดส่วนที่ต้องวางทับ ===
