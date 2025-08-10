@@ -239,8 +239,6 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-// --- ส่วนที่ 4: สคริปต์สำหรับฟอร์มติดต่อ (Formspree Backend) ---
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     if (!document.querySelector('#form-animation-style')) {
@@ -308,4 +306,3 @@ if (contactForm) {
         }
     });
 }
-// === END: สิ้นสุดส่วนที่ต้องวางทับ ===
