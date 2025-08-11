@@ -133,7 +133,7 @@ nav.glass { display: flex; justify-content: space-between; align-items: center; 
 .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(230, 230, 255, 0.6); }
 .form-group textarea { height: 120px; resize: vertical; line-height: 1.5; }
 .contact-item { display: flex; align-items: center; margin-bottom: 25px; }
-.contact-item-icon { width: 40px; height: 40px; background: rgba(0, 229, 255, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px; flex-shrink: 0; color: #00E5FF;}
+.contact-item-icon { width: 40px; height: 40px; background: rgba(198, 198, 198, 0.174); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px; flex-shrink: 0; color: #00E5FF;}
 .contact-item-text h4 { margin-bottom: 5px; }
 .contact-item-text p { line-height: 1.4; }
 button.cta-button, .cta-button { font-family: inherit; cursor: pointer; display: inline-block; padding: 15px 40px; background: rgba(0, 229, 255, 0.2); text-decoration: none; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; border: 2px solid rgba(0, 229, 255, 0.3); }
