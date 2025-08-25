@@ -335,7 +335,7 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
 
 .tech-tag {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #00E5FF; /* Or your theme's accent color */
+    color: #effcff; /* Or your theme's accent color */
     padding: 4px 10px;
     border-radius: 15px;
     font-size: 0.8rem;
