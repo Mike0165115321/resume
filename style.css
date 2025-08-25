@@ -241,33 +241,32 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
         padding: 30px 20px;
     }
     .hero-content h1 {
-        font-size: 2.2rem; /* ลดขนาด H1 */
+        font-size: 2.2rem;
     }
     .hero-content h3 {
-        font-size: 1.2rem; /* ลดขนาด H3 */
+        font-size: 1.2rem;
     }
     .hero-content p {
         font-size: 1rem;
     }
     .hero-actions {
-        flex-direction: column; /* จัดเรียงปุ่มเป็นแนวตั้ง */
+        flex-direction: column;
         align-items: center;
         gap: 20px;
     }
-    /* --- [สำคัญ] แก้ไขปุ่ม CTA ที่เป็น position: fixed --- */
     .hero-cta-button .cta-button {
-        position: relative; /* เปลี่ยนเป็น relative เพื่อให้อยู่ใน flow ปกติ */
+        position: relative;
         top: auto;
         left: auto;
         margin: 0;
-        width: 100%; /* ทำให้ปุ่มกว้างเต็มพื้นที่ */
+        width: 100%;
         text-align: center;
     }
     .features, .services-grid {
-        gap: 20px; /* ลดช่องว่างระหว่าง card */
+        gap: 20px;
     }
     .feature-card, .service-card, .project-card-horizontal.glass, .about-text.glass {
-        padding: 25px 20px; /* ลด padding ของ card ทั้งหมด */
+        padding: 25px 20px;
     }
     .team-section h2 {
         font-size: 2rem;
@@ -279,24 +278,21 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
         padding: 30px 20px;
     }
     button.cta-button, .cta-button {
-        width: 100%; /* ทำให้ปุ่มกดยาวเต็มความกว้าง */
+        width: 100%;
         padding: 15px 20px;
     }
-    /* --- ปรับตำแหน่ง Chat Bubble ของหุ่นยนต์ --- */
     .robot-container {
-        max-width: 250px; /* ลดขนาดหุ่นยนต์เล็กน้อย */
+        max-width: 250px;
     }
     .chat-bubble {
-        /* ย้าย bubble มาไว้ด้านบนแทนด้านข้าง เพื่อไม่ให้ล้นจอ */
         left: 50%;
-        top: -15px; /* ตำแหน่งเหนือหัวหุ่นยนต์ */
+        top: -15px;
         transform: translateX(-50%) scale(0.8);
     }
     .chat-bubble.show {
         transform: translateX(-50%) scale(1);
     }
     .chat-bubble::after {
-        /* ปรับลูกศรชี้ลง */
         top: 100%;
         left: 50%;
         right: auto;
@@ -305,13 +301,12 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
         border-width: 8px;
     }
     .robot-guide-container {
-        width: 90px; /* ลดขนาด guide robot */
+        width: 90px;
         height: 90px;
         bottom: 15px;
         right: 15px;
     }
     .chat-bubble-guide {
-        /* จัดตำแหน่ง bubble ของ guide robot ให้อยู่กลางๆ */
         bottom: 105%;
         right: 50%;
         transform: translateX(50%);
@@ -325,7 +320,6 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
         transform: translateX(-50%);
     }
 }
-/* Style for Tech Tags on Project Cards */
 .project-tech-tags {
     display: flex;
     flex-wrap: wrap;
@@ -335,14 +329,13 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
 
 .tech-tag {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #effcff; /* Or your theme's accent color */
+    color: #effcff;
     padding: 4px 10px;
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
     border: 1px solid rgba(0, 229, 255, 0.3);
 }
-/* Style for "In Development" Badge */
 .status-badge {
     display: inline-block;
     padding: 5px 12px;
@@ -354,7 +347,7 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
 }
 
 .status-badge.in-development {
-    background-color: rgba(255, 165, 0, 0.2); /* Orange tone */
+    background-color: rgba(255, 165, 0, 0.2);
     color: #FFA500;
     border: 1px solid rgba(255, 165, 0, 0.4);
 }
