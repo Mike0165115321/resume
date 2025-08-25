@@ -325,3 +325,20 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
         transform: translateX(-50%);
     }
 }
+/* Style for Tech Tags on Project Cards */
+.project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.tech-tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #00E5FF; /* Or your theme's accent color */
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+}

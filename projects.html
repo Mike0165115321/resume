@@ -76,9 +76,17 @@
                         <div class="project-card-horizontal glass">
                             <div class="project-header">
                                 <h3>Project Nexus: เฟิง V2</h3>
-                                <p class="role">เทคโนโลยี: FastAPI, Gemini, Llama 3, RAG, Neo4j, KG-RAG, Dependency
-                                    Injection, Multi-Agent System, Speech I/O, Real-Time Search, Personal Assistant
-                                    Skills</p>
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">Gemini</span>
+                                    <span class="tech-tag">Llama 3</span>
+                                    <span class="tech-tag">Advanced RAG</span>
+                                    <span class="tech-tag">KG-RAG</span>
+                                    <span class="tech-tag">Neo4j</span>
+                                    <span class="tech-tag">Multi-Agent</span>
+                                    <span class="tech-tag">Dependency Injection</span>
+                                    <span class="tech-tag">Speech I/O</span>
+                                </div>
                             </div>
                             <div class="project-body">
                                 <p class="bio">
@@ -131,7 +139,7 @@
                                     <li><i class='bx bxs-factory'></i>
                                         <div><strong>Production-Ready ETL Pipelines:</strong>
                                             มี "โรงงานข้อมูล" แยกต่างหาก (manage_*.py) สำหรับบำรุงรักษาคลังความรู้
-                                            </div>
+                                        </div>
                                     </li>
                                     <li><i class='bx bxs-bot'></i>
                                         <div><strong>Personal Assistant Skills:</strong> แจ้งเวลา/วันที่ปัจจุบัน,
@@ -158,49 +166,60 @@
                             </div>
                         </div>
 
+                        <!-- Project 2: Personal Consultant AI เฟิง V1 (Updated) -->
                         <div class="project-card-horizontal glass">
                             <div class="project-header">
                                 <h3>Personal Consultant AI เฟิง V1</h3>
-                                <p class="role">เทคโนโลยี: FastAPI, Gemini, RAG, FAISS, SQLite, Web Speech API</p>
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">Gemini</span>
+                                    <span class="tech-tag">RAG</span>
+                                    <span class="tech-tag">FAISS</span>
+                                    <span class="tech-tag">SQLite</span>
+                                    <span class="tech-tag">Web Speech API</span>
+                                </div>
                             </div>
                             <div class="project-body">
                                 <p class="bio">
                                     <strong>Personal Consultant AI</strong>
-                                    คือโปรเจคต้นแบบที่ใช้ทดสอบและพิสูจน์แนวคิด <em>Layered Flow Architecture</em>
-                                    ซึ่งเป็นโครงร่างแรกของระบบ AI ผู้ช่วยส่วนตัว ก่อนพัฒนาไปสู่ Project Nexus
-                                    เทรนด้วยความรู้จากหนังสือทั้ง 118 เล่มเนื้อหาครอบครุมทุกอย่าง
-                                    แม้จะไม่ซับซ้อนเท่ารุ่นหลัง แต่ก็วางรากฐานด้านการประมวลผลลำดับชั้น, RAG,
-                                    และระบบความทรงจำ
+                                    คือโปรเจคต้นแบบที่ใช้ทดสอบและพิสูจน์แนวคิดสถาปัตยกรรม AI
+                                    ก่อนจะพัฒนาสู่ Project Nexus โดยมีจุดเด่นคือโครงสร้างแบบ "Dispatcher"
+                                    ที่วางรากฐานสำคัญด้านการประมวลผลลำดับชั้น, RAG, และระบบความทรงจำ
                                 </p>
                                 <ul class="architecture-highlights">
-                                    <li><i class='bx bxs-layer'></i>
-                                        <div><strong>Layered Flow Architecture:</strong>
-                                            แบ่งการทำงานเป็นลำดับชั้น มี Quick Response และ Tool-Based Functions
-                                            สำหรับคำสั่งง่ายๆ ก่อนส่งคำถามซับซ้อนไปยัง Super Advisor
+                                    <li><i class='bx bxs-sitemap'></i>
+                                        <div><strong>Dispatcher-Driven Architecture:</strong>
+                                            ใช้ `main.py` เป็น "Central Dispatcher" คอยคัดกรองและส่งต่องาน
+                                            โดยจัดการคำสั่งง่ายๆ ผ่าน Tool-Based Functions ก่อนจะส่งคำถามซับซ้อนไปยัง
+                                            "สมองกลหลัก"
                                         </div>
                                     </li>
-                                    <li><i class='bx bxs-book-reader'></i>
-                                        <div><strong>Core RAG Implementation:</strong>
-                                            ใช้ RAG (Gemini + FAISS) เพื่อค้นหาและสังเคราะห์คำตอบจากฐานความรู้ (หนังสือ)
+                                    <li><i class='bx bxs-user-pin'></i>
+                                        <div><strong>Dedicated 'Super-Advisor' Brain:</strong>
+                                            คำถามเชิงลึกทั้งหมดจะถูกส่งไปยัง `super_advisor.py`
+                                            ซึ่งเป็นโมดูลผู้เชี่ยวชาญที่ใช้ RAG ค้นหาคำตอบจากคลังความรู้ (หนังสือ 118
+                                            เล่ม) โดยเฉพาะ
                                         </div>
                                     </li>
                                     <li><i class='bx bxs-memory-card'></i>
-                                        <div><strong>Memory System:</strong>
-                                            รองรับทั้งความจำระยะสั้น (SQLite) และความจำระยะยาว (FAISS Index)
-                                            เพื่อจดจำข้อมูลผู้ใช้, บทสนทนา, และบริบทที่ผ่านมา
+                                        <div><strong>Comprehensive Memory System:</strong>
+                                            ผสานความจำระยะสั้น (SQLite) สำหรับบทสนทนาปัจจุบัน และความจำระยะยาว (FAISS)
+                                            สำหรับบริบทและความรู้เชิงลึกของผู้ใช้
                                         </div>
                                     </li>
-                                    <li><i class='bx bxs-microphone-alt'></i>
-                                        <div><strong>Interactive Web Interface:</strong>
-                                            รองรับการสั่งงานด้วยเสียง (Speech-to-Text)
-                                            และอ่านออกเสียงคำตอบ (Text-to-Speech)
+                                    <li><i class='bx bxs-extension'></i>
+                                        <div><strong>Modular Tool System:</strong>
+                                            ฟังก์ชันผู้ช่วยส่วนตัว (เช่น บอกเวลา, ควบคุม OS, ค้นหาภาพ)
+                                            ถูกออกแบบเป็นโมดูลแยกส่วน (`modules/*.py`)
+                                            ทำให้ง่ายต่อการเพิ่มและจัดการเครื่องมือใหม่ๆ
                                         </div>
                                     </li>
-                                    <li><i class='bx bxs-bot'></i>
-                                        <div><strong>Personal Assistant Skills:</strong> แจ้งเวลา/วันที่ปัจจุบัน,
-                                            เปิด-ปิดเสียงระบบ,
-                                            ควบคุมแอปพลิเคชัน, เปิดเครื่องคิดเลข, ค้นหาภาพ,
-                                            และคำสั่งควบคุมทั่วไปผ่านเสียงหรือข้อความ</div>
+                                    <li><i class='bx bxs-factory'></i>
+                                        <div><strong>Data Management Pipeline:</strong>
+                                            มีชุดเครื่องมือ (`เตรียมไฟล์.py`, `เพิ่มข้อมูลหนังสือ.py`)
+                                            แยกต่างหากสำหรับสร้างและจัดการฐานข้อมูลความรู้ (FAISS Index)
+                                            แสดงถึงกระบวนการ ETL ที่สมบูรณ์
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -213,82 +232,201 @@
                             </div>
                         </div>
 
+                        <!-- Project 3: Power Strategist AI (Updated) -->
                         <div class="project-card-horizontal glass">
                             <div class="project-header">
-                                <h3>Mini project Power Strategist AI</h3>
-                                <p class="role">เทคโนโลยี: FastAPI, RAG, Gemini, Vanilla JS, Rerankers</p>
+                                <h3>Power Strategist AI</h3>
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">Gemini</span>
+                                    <span class="tech-tag">RAG</span>
+                                    <span class="tech-tag">FAISS</span>
+                                    <span class="tech-tag">Multilingual Embeddings</span>
+                                    <span class="tech-tag">Rerankers</span>
+                                    <span class="tech-tag"> Vanilla JS</span>
+                                </div>
                             </div>
                             <div class="project-body">
                                 <p class="bio">
-                                    <strong>Power Strategist AI</strong>
-                                    คือมินิโปรเจคแบบ Full-Stack ที่ออกแบบมาเพื่อให้คำปรึกษาเชิงกลยุทธ์
-                                    โดยอ้างอิงจากเนื้อหาในหนังสือ <em>The 48 Laws of Power</em> โดยเฉพาะ
-                                    เน้นการตอบอย่างแม่นยำและการใช้งานที่ลื่นไหล เพื่อโชว์ศักยภาพของการสร้าง “AI
-                                    ผลิตภัณฑ์จริง” ขนาดเล็ก
+                                    <strong>Power Strategist AI</strong> คือโปรเจค Full-Stack AI Chatbot
+                                    ที่ทำหน้าที่เป็น "ผู้เชี่ยวชาญ" ด้านหนังสือ <em>The 48 Laws of Power</em>
+                                    เพื่อสาธิตสถาปัตยกรรม RAG สมัยใหม่ สามารถตอบคำถามซับซ้อนโดยอ้างอิงเนื้อหาจริง
+                                    พร้อมบุคลิกของผู้เชี่ยวชาญและ UI ที่ออกแบบมาโดยเฉพาะ
                                 </p>
                                 <ul class="architecture-highlights">
                                     <li><i class='bx bxs-filter-alt'></i>
                                         <div><strong>Reranker-Enhanced RAG:</strong>
-                                            ใช้ Reranker Model ในไปป์ไลน์เพื่อคัดกรองและจัดลำดับข้อมูล
-                                            ก่อนส่งให้ Gemini สังเคราะห์ ทำให้คำตอบมีความน่าเชื่อถือสูง
+                                            ใช้ Multilingual Embedding Model เพื่อเข้าใจภาษาไทย และ Reranker
+                                            เพื่อคัดกรองข้อมูล ทำให้คำตอบที่อ้างอิงจากหนังสือมีความแม่นยำสูงสุด
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-shield-alt-2'></i>
+                                        <div><strong>Resilient API Key Manager:</strong>
+                                            ออกแบบระบบจัดการ API Key ที่ทนทานต่อข้อผิดพลาด พร้อมกลไก Smart Throttling
+                                            เพื่อสลับคีย์อัตโนมัติเมื่อเกิดปัญหาหรือใช้งานเกินโควต้า
                                         </div>
                                     </li>
                                     <li><i class='bx bxs-zap'></i>
-                                        <div><strong>Streaming Responses:</strong>
-                                            API รองรับการสตรีมคำตอบแบบ Real-time
-                                            ให้ผู้ใช้เห็นผลลัพธ์ทันทีเหมือน ChatGPT
+                                        <div><strong>Real-Time Streaming API:</strong>
+                                            Backend (FastAPI) รองรับการสตรีมคำตอบแบบ Real-time
+                                            ให้ผู้ใช้เห็นผลลัพธ์ทันทีเหมือน ChatGPT สร้างประสบการณ์ที่ลื่นไหล
                                         </div>
                                     </li>
-                                    <li><i class='bx bx-desktop'></i>
-                                        <div><strong>Dynamic Frontend Interface:</strong>
-                                            สร้างหน้าเว็บแบบ Single-Page ที่โต้ตอบกับผู้ใช้ โดยใช้ JavaScript
-                                            พื้นฐานในการรับข้อมูล (Streaming API) จาก Backend ที่เป็น Python
+                                    <li><i class='bx bxs-plug'></i>
+                                        <div><strong>Seamless Full-Stack Integration:</strong>
+                                            ให้บริการทั้ง Backend และ Frontend จากที่เดียวกัน สร้างประสบการณ์แบบ
+                                            Single-Page Application
+                                            (SPA) ที่สมบูรณ์ด้วย Vanilla JS
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                             <div class="team-social">
-                                <a href="https://github.com/Mike0165115321/Mini_project_The48_Laws_of_Power_Advisor.git"
+                                <a href="https://github.com/Mike0165115321/The-48-Laws-of-Power-Advisor.git"
                                     title="GitHub" target="_blank">
                                     <i class='bx bxl-github'></i>
                                 </a>
                                 <p class="github-prompt">(คลิกที่ไอคอนเพื่อดูโค้ดและผลงานจริง)</p>
                             </div>
                         </div>
+                        <!-- Project 4: AI News Reporter -->
+                        <div class="project-card-horizontal glass">
+                            <div class="project-header">
+                                <h3>AI News Reporter: RAG-Powered News System</h3>
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">Gemini</span>
+                                    <span class="tech-tag">RAG</span>
+                                    <span class="tech-tag">FAISS</span>
+                                    <span class="tech-tag">ETL Pipeline</span>
+                                    <span class="tech-tag">Full-Stack</span>
+                                    <span class="tech-tag">Python
+                                    + Vanilla JS</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <p class="bio">
+                                    <strong>AI News Reporter</strong> คือเว็บแอปพลิเคชัน Full-Stack ที่ทำหน้าที่เป็น
+                                    "นักข่าว AI"
+                                    สามารถค้นหา, รวบรวม, และสรุปข่าวสารล่าสุดจากหลากหลายแหล่งข้อมูลแบบเรียลไทม์
+                                    โดยผสานระบบท่อข้อมูล (ETL), การค้นหาเชิงความหมาย (Vector Search),
+                                    และการสังเคราะห์เนื้อหาด้วย LLM เข้าไว้ด้วยกันอย่างสมบูรณ์
+                                </p>
+                                <ul class="architecture-highlights">
+                                    <li><i class='bx bxs-factory'></i>
+                                        <div><strong>Autonomous ETL Pipeline:</strong>
+                                            มี "โรงงานข้อมูล" (manage_news.py) แยกต่างหากสำหรับดึงข่าว (Extract),
+                                            ขูดเนื้อหา (Transform),
+                                            และสร้าง Vector Index (Load) จัดเก็บลงคลังข้อมูล FAISS
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-filter-alt'></i>
+                                        <div><strong>RAG Core Engine:</strong>
+                                            หัวใจของระบบ (news_rag_engine.py) ทำหน้าที่แปลงคำถามเป็น Vector
+                                            เพื่อค้นหาข่าวที่เกี่ยวข้องที่สุด (Retrieve) จากคลังข้อมูล
+                                            ก่อนส่งต่อไปให้ AI สังเคราะห์คำตอบ
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-brain'></i>
+                                        <div><strong>AI-Powered Summarizer:</strong>
+                                            ใช้ Gemini API (news_generation.py) ในการสังเคราะห์ (Generate)
+                                            คำตอบสรุปข่าวที่เป็นภาษาไทยอย่างสละสลวย
+                                            โดยอ้างอิงจากข้อมูลที่ RAG Engine ค้นเจอ และมีบุคลิกที่กำหนดไว้ใน
+                                            (prompts.py)
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-server'></i>
+                                        <div><strong>Full-Stack Architecture:</strong>
+                                            ระบบ Backend สร้างด้วย FastAPI ทำหน้าที่เป็น API Server และจัดการ Logic
+                                            ทั้งหมด
+                                            ส่วน Frontend สร้างด้วย Vanilla JS, HTML, CSS
+                                            เพื่อสร้างหน้าแชทที่โต้ตอบกับผู้ใช้
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-cube-alt'></i>
+                                        <div><strong>Modular & Structured Codebase:</strong>
+                                            ออกแบบสถาปัตยกรรมไฟล์อย่างเป็นระบบ (core, data, frontend)
+                                            แยกส่วนการทำงานชัดเจน ทำให้ง่ายต่อการบำรุงรักษาและต่อยอด
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="team-social">
+                                <a href="https://github.com/Mike0165115321/AI_NEWS_REPORTER.git" title="GitHub"
+                                    target="_blank"><i class='bx bxl-github'></i></a>
+                                <p class="github-prompt">(คลิกที่ไอคอนเพื่อดูโค้ดและสถาปัตยกรรมทั้งหมด)</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
+                <!--               SECTION ใหม่: โปรเจคด้านอื่นๆ                 -->
+                <!-- ================================================================ -->
+                <section class="team-section">
+                    <h2>โปรเจคด้าน Web, Mobile & อื่นๆ</h2>
+                    <div class="team-grid">
+
+                        <!-- ตัวอย่าง Project Card สำหรับโปรเจคอื่นๆ -->
+                        <div class="project-card-horizontal glass">
+                            <div class="project-header">
+                                <h3>[ชื่อโปรเจค Web/Mobile/Game ของคุณ]</h3>
+                                <p class="role">เทคโนโลยี: [เช่น Flutter, Dart, Firebase, React.js, Node.js]</p>
+                            </div>
+                            <div class="project-body">
+                                <p class="bio">
+                                    <strong>[อธิบายโปรเจคสั้นๆ ว่ามันคืออะไร ทำอะไรได้บ้าง]</strong>
+                                    เช่น แอปพลิเคชันสำหรับจดบันทึกที่สร้างด้วย Flutter หรือเกมง่ายๆ ที่สร้างด้วย Unity
+                                    เพื่อเรียนรู้หลักการทำงานของ Game Engine
+                                </p>
+                                <ul class="architecture-highlights">
+                                    <li><i class='bx bxs-devices'></i>
+                                        <div><strong>[จุดเด่นข้อที่ 1]:</strong> [เช่น Cross-Platform UI -
+                                            ออกแบบ UI ครั้งเดียว ใช้งานได้ทั้ง iOS และ Android]</div>
+                                    </li>
+                                    <li><i class='bx bxs-data'></i>
+                                        <div><strong>[จุดเด่นข้อที่ 2]:</strong> [เช่น Real-time Database -
+                                            ใช้ Firebase Firestore ในการซิงค์ข้อมูลแบบเรียลไทม์]</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="team-social">
+                                <a href="[ลิงก์ GitHub ของโปรเจค]" title="GitHub" target="_blank"><i
+                                        class='bx bxl-github'></i></a>
+                                <p class="github-prompt">(คลิกเพื่อดูโค้ด)</p>
+                            </div>
+                        </div>
+
+                    </div>
             </div>
         </div>
-    </div>
 
-    <div id="footer">
-        <div class="container">
-            <footer class="glass">
-                <p>© 2024 Resume Chapol Promsavana</p>
-            </footer>
+        <div id="footer">
+            <div class="container">
+                <footer class="glass">
+                    <p>© 2024 Resume Chayapol Promsavana</p>
+                </footer>
+            </div>
         </div>
-    </div>
-    <div class="robot-guide-container" id="robot-guide">
-        <svg id="robot-guide-svg" viewBox="0 0 200 200">
-            <g id="robot-head-guide">
-                <circle cx="100" cy="55" r="45" fill="rgba(224, 240, 255, 0.25)" stroke="rgba(255, 255, 255, 0.6)"
-                    stroke-width="2.5" />
-                <circle cx="100" cy="55" r="42" fill="#00E5FF" />
-                <circle id="left-pupil-guide" cx="85" cy="55" r="7" fill="#1A1A1A" />
-                <circle id="right-pupil-guide" cx="115" cy="55" r="7" fill="#1A1A1A" />
-                <g id="mouth-group-guide">
-                    <path id="mouth-closed-guide" d="M 92,78 Q 100,85 108,78" stroke="#1A1A1A" stroke-width="3"
-                        fill="none" stroke-linecap="round" />
-                    <path id="mouth-open-guide" d="M 95,78 C 97,88 103,88 105,78 Z" fill="#1A1A1A"
-                        visibility="hidden" />
+        <div class="robot-guide-container" id="robot-guide">
+            <svg id="robot-guide-svg" viewBox="0 0 200 200">
+                <g id="robot-head-guide">
+                    <circle cx="100" cy="55" r="45" fill="rgba(224, 240, 255, 0.25)" stroke="rgba(255, 255, 255, 0.6)"
+                        stroke-width="2.5" />
+                    <circle cx="100" cy="55" r="42" fill="#00E5FF" />
+                    <circle id="left-pupil-guide" cx="85" cy="55" r="7" fill="#1A1A1A" />
+                    <circle id="right-pupil-guide" cx="115" cy="55" r="7" fill="#1A1A1A" />
+                    <g id="mouth-group-guide">
+                        <path id="mouth-closed-guide" d="M 92,78 Q 100,85 108,78" stroke="#1A1A1A" stroke-width="3"
+                            fill="none" stroke-linecap="round" />
+                        <path id="mouth-open-guide" d="M 95,78 C 97,88 103,88 105,78 Z" fill="#1A1A1A"
+                            visibility="hidden" />
+                    </g>
+                    <line x1="100" y1="10" x2="100" y2="-5" stroke="#BCC6CC" stroke-width="3" />
+                    <circle cx="100" cy="-5" r="5" fill="#00E5FF" id="antenna-light-guide" />
                 </g>
-                <line x1="100" y1="10" x2="100" y2="-5" stroke="#BCC6CC" stroke-width="3" />
-                <circle cx="100" cy="-5" r="5" fill="#00E5FF" id="antenna-light-guide" />
-            </g>
-        </svg>
-        <div id="robot-chat-bubble-guide" class="chat-bubble-guide"></div>
-    </div>
-    <script src="script.js"></script>
+            </svg>
+            <div id="robot-chat-bubble-guide" class="chat-bubble-guide"></div>
+        </div>
+        <script src="script.js"></script>
 </body>
 
 </html>
