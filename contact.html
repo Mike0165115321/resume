@@ -10,7 +10,35 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap"
         rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .contact-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 22px;
+        }
+
+        .contact-social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 
 <body>
@@ -97,13 +125,14 @@
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-item-icon">💼</div>
+                            <div class="contact-item-icon">🌐</div>
                             <div class="contact-item-text">
-                                <h4>ติดต่อได้ที่</h4>
-                                <p><a href="https://www.facebook.com/chayapol.promsavana" target="_blank"
-                                        style="color:white; text-decoration: none;">facebook</a></p>
-                                <p><a href="https://www.instagram.com/feng_himself/" target="_blank"
-                                        style="color:white; text-decoration: none;">instagram</a></p>
+                                <h4>ช่องทางอื่นๆ</h4>
+                                <div class="contact-social-links">
+                                    <a href="https://www.facebook.com/chayapol.promsavana" title="Facebook" target="_blank"><i class='bx bxl-facebook'></i></a>
+                                    <a href="https://www.instagram.com/feng_himself/" title="Instagram" target="_blank"><i class='bx bxl-instagram'></i></a>
+                                    <a href="https://github.com/Mike0165115321" title="GitHub" target="_blank"><i class='bx bxl-github'></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>

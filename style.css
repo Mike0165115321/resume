@@ -342,3 +342,31 @@ body.fade-out .robot-container::before, body.fade-out .robot-container::after { 
     font-weight: 500;
     border: 1px solid rgba(0, 229, 255, 0.3);
 }
+/* Style for "In Development" Badge */
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 10px;
+    animation: pulse 2s infinite;
+}
+
+.status-badge.in-development {
+    background-color: rgba(255, 165, 0, 0.2); /* Orange tone */
+    color: #FFA500;
+    border: 1px solid rgba(255, 165, 0, 0.4);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 165, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+    }
+}
