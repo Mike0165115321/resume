@@ -357,8 +357,82 @@
                                 <p class="github-prompt">(คลิกที่ไอคอนเพื่อดูโค้ดและสถาปัตยกรรมทั้งหมด)</p>
                             </div>
                         </div>
+                        <div class="project-card-horizontal glass">
+                            <div class="project-header">
+                                <h3>OpenThaiGPT-RAG Chat: ภัณฑารักษ์ความรู้</h3>
+                                <div class="project-tech-tags">
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">OpenThaiGPT</span>
+                                    <span class="tech-tag">RAG</span>
+                                    <span class="tech-tag">FAISS</span>
+                                    <span class="tech-tag">4-bit Quantization</span>
+                                    <span class="tech-tag">Prompt Engineering</span>
+                                    <span class="tech-tag">Tailwind CSS</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <p class="bio">
+                                    <strong>OpenThaiGPT-RAG Chat</strong> คือเว็บแอปพลิเคชัน AI
+                                    ที่ทำหน้าที่เป็น "ภัณฑารักษ์ความรู้" ส่วนตัว
+                                    สามารถตอบคำถามจากคลังข้อมูล (หนังสือ) ที่กำหนดเองได้อย่างชาญฉลาด
+                                    โดยเป็นโปรเจคที่สาธิตการสร้างระบบ RAG แบบ Full-Stack ด้วยโมเดลภาษาไทย
+                                </p>
+                                <ul class="architecture-highlights">
+                                    <li><i class='bx bxs-brain'></i>
+                                        <div><strong>Thai LLM Integration:</strong>
+                                            ขับเคลื่อนด้วย `openthaigpt-1.5-7b-instruct`
+                                            พร้อมเทคนิค 4-bit Quantization
+                                            เพื่อให้รันบน GPU ระดับ Consumer ได้อย่างมีประสิทธิภาพ
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-filter-alt'></i>
+                                        <div><strong>CPU-Based RAG Engine:</strong>
+                                            ออกแบบ RAG Engine (`rag_engine.py`) ให้ทำงานบน CPU ทั้งหมด (Embedding,
+                                            Reranking) เพื่อสงวน VRAM ไว้สำหรับ LLM โดยเฉพาะ
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-user-check'></i>
+                                        <div><strong>Intelligent Triage System:</strong>
+                                            AI Core (`ai_core.py`) มีระบบคัดกรองอัจฉริยะ
+                                            สามารถเลือกระหว่าง "โหมดภัณฑารักษ์ความรู้"
+                                            เมื่อเจอข้อมูลที่เกี่ยวข้อง และ "โหมดสนทนาทั่วไป" เมื่อไม่เจอ
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-edit'></i>
+                                        <div><strong>Advanced Prompt Engineering:</strong>
+                                            ออกแบบ Prompt ที่ซับซ้อนเพื่อกำหนด "บุคลิกภาพ" (Persona),
+                                            โครงสร้างคำตอบ, และน้ำเสียงของ AI ได้อย่างสมบูรณ์แบบ
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-memory-card'></i>
+                                        <div><strong>Short-Term Memory:</strong>
+                                            มีระบบความจำระยะสั้นเพื่อจดจำบริบทของบทสนทนา
+                                            ทำให้การพูดคุยต่อเนื่องและเป็นธรรมชาติ
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-server'></i>
+                                        <div><strong>Asynchronous FastAPI Backend:</strong>
+                                            สร้าง API Server ที่เสถียรและสามารถรองรับงานที่ใช้เวลานาน (AI
+                                            Inference) ได้โดยไม่เกิด Timeout
+                                        </div>
+                                    </li>
+                                    <li><i class='bx bxs-paint'></i>
+                                        <div><strong>Modern Frontend with Tailwind CSS:</strong>
+                                            ออกแบบและสร้าง UI ที่สวยงามและทันสมัยด้วย HTML และ Tailwind CSS (ผ่าน CDN)
+                                            โดยไม่ต้องใช้ JavaScript Framework ที่ซับซ้อน
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="team-social">
+                                <a href="https://github.com/Mike0165115321/OpenThaiGPT.git" title="GitHub"
+                                    target="_blank"><i class='bx bxl-github'></i></a>
+                                <p class="github-prompt">(คลิกที่ไอคอนเพื่อดูโค้ดและสถาปัตยกรรมทั้งหมด)</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
+
 
                 <section class="team-section">
                     <h2>โปรเจคด้าน Web Development</h2>
